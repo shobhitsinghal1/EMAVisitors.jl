@@ -16,6 +16,10 @@ export set_path_to_excel,
        get_path_to_talk_schedule,
        get_path_output
 
+include("types.jl")
+include("aux_func.jl")
+include("main_funcs.jl")
+include("write_latex.jl")
 
 
 
