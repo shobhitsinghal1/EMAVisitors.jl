@@ -78,16 +78,19 @@ function print_first_column(speaker::SpeakerName, dtu_mem::Vector{DtuMember})
     end
 
     content="""
-            \\begin{minipage}[t]{$(0.23)\\textwidth}
+            \\begin{minipage}[t]{$(0.17)\\textwidth}
                 \\begin{flushleft}
-                    DTU Lyngby Campus, Building 325 \\\\
+                    DTU Lyngby Campus, \\\\
+                    Building 325 \\\\
                     2800 Kgs. Lyngby \\\\
                     Denmark \\\\
 
                     \\vspace{0.5cm}
-                    $(name(host(speaker))), $(position(host(speaker))) \\\\
-                    \\vspace{0.25cm}
-                    Jalal Kazempour (head), Professor
+                    $(name(host(speaker))), \\\\
+                    $(position(host(speaker))) \\\\
+                    \\vspace{0.5cm}
+                    Jalal Kazempour (head), \\\\ 
+                    Professor
 
                     \\vspace{0.5cm}
                     Contact: $(name(find_dtu_member(dtu_mem,"Josefine"))) \\\\
