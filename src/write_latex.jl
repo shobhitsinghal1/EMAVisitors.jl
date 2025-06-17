@@ -221,6 +221,7 @@ Generates the full LaTeX schedule document for the visit, writes it to a `.tex` 
 function generate_latex_schedule(; CVs::Bool=true)
 
     parse_members(PATH_TO_EXCEL[])
+    parse_members(PATH_TO_EXCEL[], others=true)
     parse_schedule(PATH_TO_EXCEL[])
 
     dtu_mem = get_all_dtu_members()
