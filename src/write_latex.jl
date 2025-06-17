@@ -249,8 +249,8 @@ function generate_latex_schedule(; CVs::Bool=true)
     n = replace(n, " " => "-") # Replace spaces with underscores for file naming
     n = lowercase(n) # Convert to lowercase for consistency
 
-    filename = joinpath(OUTPUT_DIR[], "$(n).tex")
-    filename_pdf = joinpath(OUTPUT_DIR[], "$(n).pdf")
+    filename = joinpath(OUTPUT_DIR[], "$(n)-DTU-visit-talk-schedule.tex")
+    filename_pdf = joinpath(OUTPUT_DIR[], "$(n)-DTU-visit-talk-schedule.pdf")
 
 
     open(filename, "w") do io
@@ -273,7 +273,7 @@ function generate_latex_schedule(; CVs::Bool=true)
         return filename_pdf, nothing
     else
         _generate_fake_CVs()
-        all_CVs = get_CVs(dayschedule)
+        all_CVs = get_CVs(dayschedule, speaker)
         run(`open $(filename_pdf) $(all_CVs)`)  # Open the PDF file
         return filename_pdf, all_CVs
     end

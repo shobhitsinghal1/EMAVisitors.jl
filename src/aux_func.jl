@@ -219,13 +219,17 @@ Generates a list of CV PDF file paths for all unique members in the provided day
 # Errors
 Throws an error if a required PDF file does not exist (currently commented out).
 """
-function get_CVs(m::Vector{Union{DaySchedule,Nothing}})
+function get_CVs(m::Vector{Union{DaySchedule,Nothing}}, s::SpeakerName)
     mkpath(PATH_TO_CVs[])  # Ensure the CVs directory exists
     n = unique(vcat(name.(m)...))
     tmp = map(x -> replace(x, " " => "-"), n)
     tmp = map(x -> lowercase(x), tmp)
     tmp = map(x -> joinpath(PATH_TO_CVs[], x  * "-CV.pdf"), tmp)
     tmp[end] = rstrip(tmp[end])  # Remove trailing space from the last element
+
+    n = name(s)
+    n = replace(n, " " => "-")  # Replace spaces with hyphens for file naming
+    n = lowercase(n)  # Convert to lowercase for consistency
 
     pdfs = Vector{String}(undef, length(tmp))
     for (idx,s) in enumerate(tmp)
@@ -235,8 +239,8 @@ function get_CVs(m::Vector{Union{DaySchedule,Nothing}})
         end
     end
 
-    tmp_2 = joinpath(PATH_TO_CVs[], "all-CVs.pdf")
-    tmp_3 = joinpath(PATH_TO_CVs[], "all-CVs-2.pdf")
+    tmp_2 = joinpath(PATH_TO_CVs[], "$(n)-DTU-visit-CVs.pdf")
+    tmp_3 = joinpath(PATH_TO_CVs[], "$(n)-DTU-visit-CVs-2.pdf")
     run(`cp $(pdfs[1]) $(tmp_2)`)  # Copy the first PDF to tmp_2
     for ff in pdfs[2:end]
         pdftk_cmd = `pdftk $(tmp_2) $ff cat output $tmp_3` 
