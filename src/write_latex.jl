@@ -8,7 +8,7 @@ Returns the LaTeX preamble and document start, including all required packages a
 """
 function print_packages()
     return """
-    \\documentclass{article}
+    \\documentclass[8pt]{extarticle}
     \\usepackage[landscape, top=1.5cm, left=0.5cm, right=0.5cm]{geometry}
     \\usepackage[absolute,overlay]{textpos}
     \\usepackage{graphicx}
@@ -16,7 +16,13 @@ function print_packages()
     \\svgpath{$(OUTPUT_DIR[])}
     \\usepackage{multicol}
     \\usepackage{xcolor}
+    \\usepackage{hyperref}
 
+    \\usepackage{fontspec}
+    \\usepackage{listings}
+
+    \\setmonofont{JuliaMono-Regular}
+    \\setmainfont{JuliaMono}
 
 
     % Defining page header
@@ -88,14 +94,16 @@ function print_first_column(speaker::SpeakerName, dtu_mem::Vector{DtuMember})
                     Phone: +45 25 13 05 01 \\\\
                     mail: $(email(find_dtu_member(dtu_mem,"Josefine"))) 
 
-                    \\vspace{0.5cm}
+                    \\vspace{3.5cm}
                     $(name(speaker))\\\\
                     $(affiliation(speaker)) \\\\
                 
 
-                    \\vspace{0.5cm}
+                    \\vspace{4cm}
                     \\textbf{Accomodation:} \\\\
-                    Adress of the hotel, \\\\
+                    Hotel Name: $(hotelname(speaker)), \\\\
+                    Address: $(hoteladdress(speaker)), \\\\
+                    Maps link \\href{$(hotelmaps(speaker))}{here.} \\\\
                 \\end{flushleft}
             \\end{minipage}%
             \\vrule width 1pt
@@ -244,7 +252,7 @@ function generate_latex_schedule(; CVs::Bool=true)
         """)
     end
 
-    run(`pdflatex -output-directory=$(OUTPUT_DIR[]) -shell-escape $(filename)`)
+    run(`lualatex -output-directory=$(OUTPUT_DIR[]) -shell-escape $(filename)`)
 
     if !CVs
         run(`open $(filename_pdf)`)  # Open the PDF file

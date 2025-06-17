@@ -108,6 +108,7 @@ struct SpeakerName
     host::DtuMember
 
     seminar::Union{Seminar,Nothing}
+    hotel::Dict{String,String}
 end
 
 """
@@ -175,6 +176,25 @@ talkdate(member::SpeakerName) = member.seminar === nothing ? "Not scheduled" : d
 Returns the seminar title or "Not scheduled" if no seminar is assigned.
 """
 talktitle(member::SpeakerName) = member.seminar === nothing ? "Not scheduled" : title(member.seminar)
+
+
+"""
+    hotelname(member::SpeakerName)
+Returns the name of the hotel for the speaker.
+"""
+hotelname(member::SpeakerName) = member.hotel["Name"]
+
+"""
+    hoteladdress(member::SpeakerName)
+Returns the address of the hotel for the speaker.
+"""
+hoteladdress(member::SpeakerName) = member.hotel["Address"]
+
+"""
+    hotelmaps(member::SpeakerName)
+Returns the Google Maps link for the hotel of the speaker.
+"""
+hotelmaps(member::SpeakerName) = member.hotel["Google Maps"]
 
 """
     DaySchedule(members::Dict{String, Tuple{Tuple{Time,Time}, String}}, date::Date)

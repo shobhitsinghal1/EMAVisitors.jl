@@ -40,7 +40,7 @@ Parses the talk schedule from an Excel file and writes it to a CSV file. Uses th
 - The `DataFrame` containing the talk schedule if successful, otherwise prints an error message.
 """
 function parse_schedule(path_to_schedule::String) 
-    talk_schedule = DataFrame(XLSX.readtable(path_to_schedule, "talk-schedule", "A:K"))
+    talk_schedule = DataFrame(XLSX.readtable(path_to_schedule, "talk-schedule", "A:L"))
     try
         CSV.write(joinpath(OUTPUT_DIR[], "talk-schedule.csv"), talk_schedule)
         println("File successfully save as $(joinpath(OUTPUT_DIR[], "talk-schedule.csv"))")
@@ -75,13 +75,15 @@ function create_schedule()
     host = talk_schedule[1,"Host"]
     affiliation = talk_schedule[1,"Affiliation"]
 
+    hotel = collect(skipmissing(talk_schedule[:,"Accommodation"])) |> _process_accommodation
+
     tmp_seminar = collect(skipmissing(talk_schedule[:,"Seminar"]))
     seminar = _process_seminar(tmp_seminar)
 
     dtu_members = get_all_dtu_members()
     host = find_dtu_member(dtu_members, host)
 
-    speaker = SpeakerName(n[1], n[2], email, affiliation, Date(startingdate), duration, host, seminar)
+    speaker = SpeakerName(n[1], n[2], email, affiliation, Date(startingdate), duration, host, seminar, hotel)
 
     tmp_m = String.(talk_schedule[:,"Members interested in meeting"])
     members = Vector{DtuMember}(undef, length(tmp_m))

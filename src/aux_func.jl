@@ -153,6 +153,31 @@ function _process_seminar(ss::AbstractVector)
 end
 
 
+function _process_accommodation(hh::AbstractVector)
+    println(hh)
+    println(typeof(collect(skipmissing(hh))))
+    tmp = split.(String.(hh), ":", limit=2)
+    name = ""
+    address = ""
+    google_maps = ""
+
+    for (type,info) in tmp
+        if type == "Name"
+            name = lstrip(info)
+        elseif type == "Address"
+            address = lstrip(info)
+        elseif type == "Google Maps"
+            google_maps = lstrip(info)
+        else
+            error("Unknown accommodation type: $type. It should be either 'Name', 'Address', or 'Google Maps'.")
+        end
+    end
+
+    return Dict("Name" => name, "Address" => address, "Google Maps" => google_maps)
+    
+end
+
+
 """
     _count_pdf_pages(path_to_pdf::String)
 
