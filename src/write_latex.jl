@@ -8,7 +8,7 @@ Returns the LaTeX preamble and document start, including all required packages a
 """
 function print_packages()
     return """
-    \\documentclass[8pt]{extarticle}
+    \\documentclass[10pt]{extarticle}
     \\usepackage[landscape, top=1.5cm, left=0.5cm, right=0.5cm]{geometry}
     \\usepackage[absolute,overlay]{textpos}
     \\usepackage{graphicx}
@@ -39,8 +39,8 @@ function print_packages()
 
     \\fancyhead[R]
     {
-        \\begin{textblock*}{3cm}(19.5cm, 0.2cm)
-            \\includesvg[height=1.5cm]{DTU-wind}
+        \\begin{textblock*}{3cm}(18.5cm, 0.2cm)
+            \\includesvg[height=1.7cm]{DTU-wind}
         \\end{textblock*}
     }
 
@@ -72,13 +72,13 @@ function print_first_column(speaker::SpeakerName, dtu_mem::Vector{DtuMember})
     if n_days == 3
         col_size = 0.75
     elseif n_days == 2
-        col_size = 0.5
+        col_size = 0.56
     elseif n_days == 1
-        col_size = 0.25
+        col_size = 0.33
     end
 
     content="""
-            \\begin{minipage}[t]{$(0.17)\\textwidth}
+            \\begin{minipage}[t]{$(0.19)\\textwidth}
                 \\begin{flushleft}
                     DTU Lyngby Campus, \\\\
                     Building 325 \\\\
@@ -97,18 +97,19 @@ function print_first_column(speaker::SpeakerName, dtu_mem::Vector{DtuMember})
                     Phone: +45 25 13 05 01 \\\\
                     mail: $(email(find_dtu_member(dtu_mem,"Josefine"))) 
 
-                    \\vspace{3.5cm}
+                    \\vspace{2.5cm}
                     $(name(speaker))\\\\
                     $(affiliation(speaker)) \\\\
                 
 
-                    \\vspace{4cm}
+                    \\vspace{2cm}
                     \\textbf{Accomodation:} \\\\
                     Hotel Name: $(hotelname(speaker)), \\\\
                     Address: $(hoteladdress(speaker)), \\\\
                     Maps link \\href{$(hotelmaps(speaker))}{here.} \\\\
                 \\end{flushleft}
             \\end{minipage}%
+            \\hspace{0.75cm}
             \\vrule width 1pt
             \\hspace{0.25cm}
             \\begin{minipage}[t]{$(col_size)\\columnwidth}
@@ -133,6 +134,15 @@ Generates the LaTeX code for the remaining columns of the schedule, including da
 """
 function print_other_columns(speaker::SpeakerName, day_schedules::Vector{Union{DaySchedule,Nothing}}, dtu_mem::Vector{DtuMember})
     col_size = 1/visitduration(speaker)
+
+    if visitduration(speaker) == 3
+        col_size_2 = [0.3, 0.65]
+    elseif visitduration(speaker) == 2
+        col_size_2 = [0.3, 0.7]
+    elseif visitduration(speaker) == 1
+        col_size_2 = [0.3, 0.6]
+    end
+
 
     tmp_content = ["" for _ in 1:length(day_schedules)]
 
@@ -161,11 +171,11 @@ function print_other_columns(speaker::SpeakerName, day_schedules::Vector{Union{D
             if n == name(speaker) 
 
                 tmp_content[idx] = tmp_content[idx] * """
-                            \\begin{minipage}[t]{$(0.45)\\columnwidth}
+                            \\begin{minipage}[t]{$(col_size_2[1])\\columnwidth}
                                 $(start_end_time) \\\\
                                 \\textit{(Seminar)}
                             \\end{minipage}%
-                            \\begin{minipage}[t]{$(0.55)\\columnwidth}
+                            \\begin{minipage}[t]{$(col_size_2[end])\\columnwidth}
                                 \\textbf{$(name(speaker))} \\\\
                                 $(talktitle(speaker)) \\\\
                                 $(affiliation(speaker)) \\\\
@@ -177,10 +187,10 @@ function print_other_columns(speaker::SpeakerName, day_schedules::Vector{Union{D
                 dtu_m = find_dtu_member(dtu_mem, n)
 
                 tmp_content[idx] = tmp_content[idx] * """
-                            \\begin{minipage}[t]{$(0.45)\\columnwidth}
+                            \\begin{minipage}[t]{$(col_size_2[1])\\columnwidth}
                                 $(start_end_time)
                             \\end{minipage}%
-                            \\begin{minipage}[t]{$(0.55)\\columnwidth}
+                            \\begin{minipage}[t]{$(col_size_2[end])\\columnwidth}
                                 $(name(dtu_m)) \\\\
                                 $(position(dtu_m)) \\\\
                                 $(email(dtu_m)) \\\\
@@ -197,7 +207,7 @@ function print_other_columns(speaker::SpeakerName, day_schedules::Vector{Union{D
                     \\end{minipage}%
                     \\vrule width 1pt
                     \\vspace{0.01cm}
-                    \\hspace{0.15cm}
+                    \\hspace{0.0cm}
             """
         else
             tmp_content[idx] = tmp_content[idx] * """
