@@ -19,9 +19,7 @@ jobs:
           - '1.6'
           - 'nightly'
         os:
-          - ubuntu-latest
-        arch:
-          - x64
+          - macos-latest
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
