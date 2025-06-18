@@ -153,6 +153,20 @@ function _process_seminar(ss::AbstractVector)
 end
 
 
+"""
+    _process_accommodation(hh::AbstractVector)
+
+Processes a vector of accommodation information strings and returns a dictionary with the hotel name, address, and Google Maps link.
+
+# Arguments
+- `hh::AbstractVector`: Vector of strings describing accommodation fields (e.g., "Name: Hotel", "Address: ...", "Google Maps: ...").
+
+# Returns
+- `Dict{String, String}`: A dictionary with keys "Name", "Address", and "Google Maps".
+
+# Errors
+Throws an error if an unknown accommodation type is encountered.
+"""
 function _process_accommodation(hh::AbstractVector)
     println(hh)
     println(typeof(collect(skipmissing(hh))))
@@ -261,6 +275,19 @@ function get_CVs(m::Vector{Union{DaySchedule,Nothing}}, s::SpeakerName)
 
 end
 
+"""
+    _generate_fake_CVs()
+
+Generates fake CV PDF files for all DTU members in the `PATH_TO_CVs[]` directory. Each CV is a simple LaTeX document with the member's name, compiled to PDF and named as `memberfirstname-memberlastname-CV.pdf` (all lowercase, hyphens instead of spaces).
+
+# Side Effects
+- Creates the `PATH_TO_CVs[]` directory if it does not exist.
+- Writes and compiles temporary LaTeX files for each member.
+- Cleans up temporary files after PDF generation.
+
+# Returns
+- `Vector{String}`: The names of all DTU members for whom fake CVs were generated.
+"""
 function _generate_fake_CVs()
     mkpath(PATH_TO_CVs[])
     dtu_members = get_all_dtu_members()
