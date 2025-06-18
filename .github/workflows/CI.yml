@@ -16,9 +16,4 @@ jobs:
       - name: Install dependencies
         run: julia --project -e 'using Pkg; Pkg.instantiate()'
       - name: Run tests
-        run: julia --project -e 'using Pkg; Pkg.test(coverage=true)'
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          files: ./coverage.xml
-          fail_ci_if_error: false
+        run: julia --project -e 'using Pkg; Pkg.test()'
