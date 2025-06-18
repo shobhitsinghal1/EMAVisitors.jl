@@ -45,15 +45,21 @@ To generate the LaTeX schedule document and compile it to PDF, use:
 ```julia
 using EMAVisitors
 
-EMAVisitors.generate_latex_schedule()
+EMAVisitors.generate_latex_schedule(; CVs=true)
 ```
+
+### About the `CVs` Parameter
+
+- The `CVs` keyword argument (default: `true`) controls whether the function will collect and merge CVs for all members from the directory `OUTPUT_DIR[]/CVs`.
+- If `CVs=true`, the function expects each CV to be named as `memberfirstname-memberlastname-CV.pdf` (all lowercase, e.g., `alice-smith-CV.pdf`). It will merge these into a single PDF and open it along with the schedule.
+- If `CVs=false`, only the schedule PDF will be generated and opened.
 
 This will:
 
 - Read the configuration and data files.
 - Generate a LaTeX file in your output directory.
 - Compile the LaTeX file to PDF (requires a working LaTeX installation).
-- Collect CVs for all members from the directory `OUTPUT_DIR[]/CVs` and merge them into a single PDF. **Each CV must be named as `memberfirstname-memberlastname-CV.pdf` (all lowercase)** (e.g., `alice-smith-CV.pdf`).
+- Optionally collect and merge CVs for all members, depending on the `CVs` parameter.
 
 ## Limitations
 
