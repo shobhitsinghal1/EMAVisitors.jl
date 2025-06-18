@@ -4,6 +4,8 @@
 
 EMAVisitors.jl is a Julia package for managing seminar schedules, members, and generating LaTeX documents for the Energy and Markets Analytic (EMA) group at DTU.
 
+**Note:** To run the package, you must place a DTU logo SVG file (e.g., `DTU-wind.svg`) in the directory specified by `OUTPUT_DIR[]`. The package will issue an error if this file is missing.
+
 ## Installation
 
 To install the package, open the Julia REPL, enter the package manager by typing `]`, and run:
@@ -28,6 +30,7 @@ The package uses several configuration variables and functions (in `config.jl`) 
 **Getter functions** are also available (e.g., `get_path_to_excel()`, `get_path_output()`) to retrieve the current paths.
 
 **Example:**
+
 ```julia
 using EMAVisitors
 
@@ -46,14 +49,23 @@ EMAVisitors.generate_latex_schedule()
 ```
 
 This will:
+
 - Read the configuration and data files.
 - Generate a LaTeX file in your output directory.
 - Compile the LaTeX file to PDF (requires a working LaTeX installation).
+
+## Limitations
+
+- The current version is limited to **seven meetings per day**.
+- The duration of the visit can be **one, two, or three days**, but not more.
 
 ## Requirements
 
 - Julia 1.6 or later
 - LaTeX installation with `pdflatex` and required packages (e.g., `svg`, `fontspec`, `xcolor`, etc.)
+- `pdftk` must be installed and available in your system path (for PDF merging features)
+
+**Note:** This package was only tested on macOS. Features have not been tested on Windows.
 
 ## License
 
