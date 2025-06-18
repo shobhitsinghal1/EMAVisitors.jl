@@ -16,7 +16,6 @@ jobs:
       - name: Install dependencies
         run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
       - name: Test current folder
-        run: ls
-        run: pwd()
+        run: ls && pwd()
       - name: Run tests
         run: julia --project=. -e 'using Pkg; Pkg.test()'
