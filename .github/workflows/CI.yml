@@ -15,7 +15,5 @@ jobs:
           version: '1.11'  # or your preferred Julia version
       - name: Install dependencies
         run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
-      - name: Test current folder
-        run: ls && pwd()
       - name: Run tests
         run: julia --project=. -e 'using Pkg; Pkg.test()'
