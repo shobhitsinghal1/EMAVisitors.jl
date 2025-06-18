@@ -103,8 +103,7 @@ end
 
 
 """
-    _process_seminar(ss::AbstractVector)
-
+_process_seminar(ss::AbstractVector)
 Processes a vector of seminar information strings and returns a `Seminar` object.
 
 # Arguments
@@ -305,7 +304,7 @@ function _generate_fake_CVs()
         open(filename, "w") do f
             write(f, content)
         end
-        run(`pdflatex -output-directory=$(PATH_TO_CVs) $(filename)`)
+        run(`xelatex -output-directory=$(PATH_TO_CVs) $(filename) > /dev/null 2>&1`)
         n = replace(n, " " => "-")  # Replace spaces with hyphens for file naming
         n = lowercase(n)  # Convert to lowercase for consistency
         n = n * "-CV.pdf"  # Append "-CV.pdf" to the name

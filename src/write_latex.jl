@@ -267,7 +267,7 @@ function generate_latex_schedule(; CVs::Bool=true)
     end
 
     cd(OUTPUT_DIR[]) do 
-        run(`lualatex -output-directory=$(OUTPUT_DIR[]) -shell-escape $(filename)`) 
+        run(`lualatex -output-directory=$(OUTPUT_DIR[]) -shell-escape $(filename) > /dev/null`) 
     end
 
     if !CVs

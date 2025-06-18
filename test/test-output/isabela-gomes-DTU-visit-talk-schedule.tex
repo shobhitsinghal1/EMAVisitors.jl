@@ -1,0 +1,202 @@
+\documentclass[10pt]{extarticle}
+\usepackage[landscape, top=1.5cm, left=0.5cm, right=0.5cm]{geometry}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{graphicx}
+\usepackage[notransparent,inkscape=true]{svg}
+\svgpath{/Users/licro/.julia/dev/EMAVisitors.jl/test/test-output}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\usepackage{fontspec}
+\usepackage{listings}
+
+\setmonofont{JuliaMono-Regular}
+\setmainfont{JuliaMono}
+
+
+% Defining page header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]
+{
+    Technical University of Denmark\\
+    Department of Wind and Energy Systems\\
+    Energy and Markets Analytic (EMA) 
+}
+
+\fancyhead[R]
+{
+    \begin{textblock*}{3cm}(18.5cm, 0.2cm)
+        \includesvg[height=1.7cm]{DTU-wind}
+    \end{textblock*}
+}
+
+% Adjust space after header
+\setlength{\headsep}{2cm} % Change value as needed
+
+\begin{document}
+    \begin{center}
+        \begin{minipage}[t]{0.19\textwidth}
+            \begin{flushleft}
+                DTU Lyngby Campus, \\
+                Building 325 \\
+                2800 Kgs. Lyngby \\
+                Denmark \\
+
+                \vspace{0.5cm}
+                Licio Romao, \\
+                Assistant Professor \\
+                \vspace{0.5cm}
+                Jalal Kazempour (head), \\ 
+                Professor
+
+                \vspace{0.5cm}
+                Contact: Josefine Hansen \\
+                Phone: +45 25 13 05 01 \\
+                mail: fine@dtu.dk 
+
+                \vspace{2.5cm}
+                Isabela Gomes\\
+                ETH, Zurich \\
+            
+
+                \vspace{2cm}
+                \textbf{Accomodation:} \\
+                Hotel Name: 1 Hotel Copenhagen, \\
+                Address: Krystalgade 22, 1172 Copenhagen, Denmark, \\
+                Maps link \href{https://maps.app.goo.gl/w4DDhpL6Kiy48AfHA}{here.} \\
+            \end{flushleft}
+        \end{minipage}%
+        \hspace{0.75cm}
+        \vrule width 1pt
+        \hspace{0.25cm}
+        \begin{minipage}[t]{0.75\columnwidth}
+            \begin{minipage}[t]{0.3333333333333333\columnwidth}
+                \begin{flushleft}
+                    \textbf{10 Jun 2025} \\
+                \end{flushleft}
+            \begin{minipage}[t]{0.3\columnwidth}
+                05:00 - 05:15AM \\
+                \textit{(Seminar)}
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                \textbf{Isabela Gomes} \\
+                The best talk \\
+                ETH, Zurich \\
+                Room: LY325-R116 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+            \begin{minipage}[t]{0.3\columnwidth}
+                10:00 - 10:30AM
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                Jalal Kazempour \\
+                Professor \\
+                jalal@dtu.dk \\
+                Room: R222 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+            \begin{minipage}[t]{0.3\columnwidth}
+                14:00 - 14:30PM
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                Licio Romao \\
+                Assistant Professor \\
+                licio@dtu.dk \\
+                Room: R113 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+            \begin{minipage}[t]{0.3\columnwidth}
+                14:00 - 15:00PM
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                Shobhit Singhal \\
+                PhD Student \\
+                shosi@dtu.dk \\
+                Room: R600 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+            \begin{minipage}[t]{0.3\columnwidth}
+                15:00 - 16:00PM
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                Lesia Mitridati \\
+                Assistant Professor \\
+                lemitri@dtu.dk \\
+                Room: R113 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+        \end{minipage}%
+        \vrule width 1pt
+        \vspace{0.01cm}
+        \hspace{0.0cm}
+            \begin{minipage}[t]{0.3333333333333333\columnwidth}
+                \begin{flushleft}
+                    \textbf{11 Jun 2025} \\
+                \end{flushleft}
+            \begin{minipage}[t]{0.3\columnwidth}
+                10:00 - 10:30AM
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                Jalal Kazempour \\
+                Professor \\
+                jalal@dtu.dk \\
+                Room: R700 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+            \begin{minipage}[t]{0.3\columnwidth}
+                10:00 - 10:30AM
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                Torine Herstad \\
+                PhD Student \\
+                torhe@dtu.dk \\
+                Room: R700 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+            \begin{minipage}[t]{0.3\columnwidth}
+                15:00 - 16:00PM
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                Licio Romao \\
+                Assistant Professor \\
+                licio@dtu.dk \\
+                Room: R700 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+        \end{minipage}%
+        \vrule width 1pt
+        \vspace{0.01cm}
+        \hspace{0.0cm}
+            \begin{minipage}[t]{0.3333333333333333\columnwidth}
+                \begin{flushleft}
+                    \textbf{12 Jun 2025} \\
+                \end{flushleft}
+            \begin{minipage}[t]{0.3\columnwidth}
+                07:00 - 08:00AM
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                Yannick Heiser \\
+                PhD Student \\
+                yahei@dtu.dk \\
+                Room: R700 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+            \begin{minipage}[t]{0.3\columnwidth}
+                10:00 - 10:30AM
+            \end{minipage}%
+            \begin{minipage}[t]{0.65\columnwidth}
+                Johanna Vorwerk \\
+                Assistant Professor \\
+                vorjo@dtu.dk \\
+                Room: R600 \\
+            \end{minipage}
+            \vspace{0.01cm} \\
+            \end{minipage}%
+            \vspace{0.01cm}
+        \end{minipage}
+    \end{center}
+\end{document}
