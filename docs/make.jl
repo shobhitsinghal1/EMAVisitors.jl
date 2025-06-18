@@ -17,4 +17,4 @@ makedocs(
 )
 
 
-HTTP.serve(HTTP.FilesHandler("/docs/build"), ip"127.0.0.1", 8000)
+# HTTP.serve(HTTP.FilesHandler("/docs/build"), ip"127.0.0.1", 8000)
