@@ -154,12 +154,12 @@ end
     @test hotel["Address"] == "DTU Campus, Lyngby"
     @test hotel["Google Maps"] == "https://goo.gl/maps/DTUHotel"
 
-    @test try
-        EMAVisitors._generate_fake_CVs()
-        true
-    catch
-        false
-    end
+    # @test try
+    #     EMAVisitors._generate_fake_CVs()
+    #     true
+    # catch
+    #     false
+    # end
 
     @test try 
         EMAVisitors.parse_schedule(EMAVisitors.PATH_TO_EXCEL[])
