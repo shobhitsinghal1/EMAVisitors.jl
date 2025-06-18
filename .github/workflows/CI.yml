@@ -14,6 +14,6 @@ jobs:
         with:
           version: '1.11'  # or your preferred Julia version
       - name: Install dependencies
-        run: julia --project -e 'using Pkg; Pkg.instantiate()'
+        run: julia --project=. -e 'using Pkg; Pkg.instantiate()'
       - name: Run tests
-        run: julia --project -e 'using Pkg; Pkg.test()'
+        run: julia --project=. -e 'using Pkg; Pkg.test()'
