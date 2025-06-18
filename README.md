@@ -38,7 +38,7 @@ EMAVisitors.set_path_to_excel("/Users/yourname/Documents/talk-info.xlsx")
 EMAVisitors.set_path_output_dir("/Users/yourname/Documents/ema-talks")
 ```
 
-## Generating the LaTeX Schedule
+## Generating the LaTeX Schedule and Collecting CVs
 
 To generate the LaTeX schedule document and compile it to PDF, use:
 
@@ -53,6 +53,7 @@ This will:
 - Read the configuration and data files.
 - Generate a LaTeX file in your output directory.
 - Compile the LaTeX file to PDF (requires a working LaTeX installation).
+- Collect CVs for all members from the directory `OUTPUT_DIR[]/CVs` and merge them into a single PDF. **Each CV must be named as `memberfirstname-memberlastname-CV.pdf` (all lowercase)** (e.g., `alice-smith-CV.pdf`).
 
 ## Limitations
 
