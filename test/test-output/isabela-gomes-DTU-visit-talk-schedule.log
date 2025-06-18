@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.10.14)  18 JUN 2025 15:34
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.10.14)  18 JUN 2025 16:01
  system commands enabled.
 **/Users/licro/.julia/dev/EMAVisitors.jl/test/test-output/isabela-gomes-DTU-vis
 it-talk-schedule.tex
@@ -551,9 +551,10 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@O@olf=\skip60
 \f@nch@O@orf=\skip61
 )
-No file isabela-gomes-DTU-visit-talk-schedule.aux.
-
+(/Users/licro/.julia/dev/EMAVisitors.jl/test/test-output/isabela-gomes-DTU-visi
+t-talk-schedule.aux)
 \openout1 = isabela-gomes-DTU-visit-talk-schedule.aux
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
 LaTeX Font Info:    ... okay on input line 40.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
@@ -565,6 +566,7 @@ LaTeX Font Info:    ... okay on input line 40.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 4
 0.
+
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -636,8 +638,12 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-("|'inkscape' -V ")
 Package hyperref Info: Link coloring OFF on input line 40.
+
+(/Users/licro/.julia/dev/EMAVisitors.jl/test/test-output/isabela-gomes-DTU-visi
+t-talk-schedule.out)
+(/Users/licro/.julia/dev/EMAVisitors.jl/test/test-output/isabela-gomes-DTU-visi
+t-talk-schedule.out)
 \@outlinefile=\write3
 
 \openout3 = isabela-gomes-DTU-visit-talk-schedule.out
@@ -870,27 +876,19 @@ t-talk-schedule.aux)
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-Package rerunfilecheck Warning: File `isabela-gomes-DTU-visit-talk-schedule.out
-' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `isabela-gomes-DTU-visit-talk-schedu
-le.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `isabela-gomes-DTU-visit-talk-schedule.out' h
+as not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 )
 
 Here is how much of LuaTeX's memory you used:
- 14857 strings out of 476447
+ 14873 strings out of 476447
  125027,1977958 words of node,token memory allocated
  431 words of node memory still in use:
    3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 4 attribute, 53 glue_spec,
  4 attribute_list, 1 write nodes
    avail lists: 1:1,2:734,3:629,4:75,5:90,6:163,7:5171,8:1,9:835,10:5,11:219
- 36689 multiletter control sequences out of 65536+600000
+ 36691 multiletter control sequences out of 65536+600000
  43 fonts using 34219247 bytes
  94i,26n,89p,367b,778s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/licro/Library/Fonts/JuliaMono-RegularItalic.ttf></Users/licro/Library/Fo
