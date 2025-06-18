@@ -304,7 +304,7 @@ function _generate_fake_CVs()
         open(filename, "w") do f
             write(f, content)
         end
-        run(`xelatex -output-directory=$(PATH_TO_CVs) $(filename) > /dev/null 2>&1`)
+        run(`xelatex -output-directory=$(PATH_TO_CVs) $(filename) '>' /dev/null`)
         n = replace(n, " " => "-")  # Replace spaces with hyphens for file naming
         n = lowercase(n)  # Convert to lowercase for consistency
         n = n * "-CV.pdf"  # Append "-CV.pdf" to the name
