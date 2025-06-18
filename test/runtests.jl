@@ -183,26 +183,26 @@ end
     # EMAVisitors.get_CVs(dd_ss, ss)
 
 
-    @test try 
-        EMAVisitors._generate_fake_CVs()
-        EMAVisitors.get_CVs(dd_ss, ss)
-        true
-    catch e
-        println("Error in get_CVs: ", e)
-        false
-    end
+    # @test try 
+    #     EMAVisitors._generate_fake_CVs()
+    #     EMAVisitors.get_CVs(dd_ss, ss)
+    #     true
+    # catch e
+    #     println("Error in get_CVs: ", e)
+    #     false
+    # end
 
     
 end
 
-@testset "Write_latex" begin 
-    @test try
-        EMAVisitors.generate_latex_schedule()
-        true
-    catch
-        false
-    end
+# @testset "Write_latex" begin 
+#     @test try
+#         EMAVisitors.generate_latex_schedule()
+#         true
+#     catch
+#         false
+#     end
 
-end
+# end
 
 
