@@ -266,7 +266,9 @@ function generate_latex_schedule(; CVs::Bool=true)
         """)
     end
 
-    run(`lualatex -output-directory=$(OUTPUT_DIR[]) -shell-escape $(filename)`)
+    cd(OUTPUT_DIR[]) do 
+        run(`lualatex -output-directory=$(OUTPUT_DIR[]) -shell-escape $(filename)`) 
+    end
 
     if !CVs
         run(`open $(filename_pdf)`)  # Open the PDF file
