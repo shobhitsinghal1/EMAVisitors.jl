@@ -34,7 +34,7 @@ function print_packages()
     {
         Technical University of Denmark\\\\
         Department of Wind and Energy Systems\\\\
-        Energy and Markets Analytic (EMA) 
+        Energy Markets and Analytics (EMA) 
     }
 
     \\fancyhead[R]
