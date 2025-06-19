@@ -13,8 +13,6 @@ include("main_funcs.jl")
 
 include("write_latex.jl")
 
-
-
 # Write your package code here.
 
 end
