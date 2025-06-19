@@ -1,9 +1,6 @@
 # EMAVisitors
 
-[![Build Status](https://github.com/licioromao/EMAVisitors.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/licioromao/EMAVisitors.jl/actions/workflows/CI.yml?query=branch%3Amain)
-
-
-[![codecov](https://codecov.io/gh/licioromao/EMAVisitors.jl/branch/main/graph/badge.svg?token=btTBnBTQyw)](https://codecov.io/gh/licioromao/EMAVisitors.jl)
+[![Build Status](https://github.com/licioromao/EMAVisitors.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/licioromao/EMAVisitors.jl/actions/workflows/CI.yml?query=branch%3Amain) [![codecov](https://codecov.io/gh/licioromao/EMAVisitors.jl/branch/main/graph/badge.svg?token=btTBnBTQyw)](https://codecov.io/gh/licioromao/EMAVisitors.jl)
 
 
 EMAVisitors.jl is a Julia package for managing seminar schedules, members, and generating LaTeX documents for the Energy and Markets Analytic (EMA) group at DTU.
