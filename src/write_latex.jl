@@ -39,8 +39,8 @@ function print_packages()
 
     \\fancyhead[R]
     {
-        \\begin{textblock*}{3cm}(18.5cm, 0.2cm)
-            \\includesvg[height=1.7cm]{DTU-wind}
+        \\begin{textblock*}{3cm}(17.5cm, 0.2cm)
+            \\includesvg[height=1.6cm]{DTU-wind.svg}
         \\end{textblock*}
     }
 
