@@ -3,6 +3,9 @@
 [![Build Status](https://github.com/licioromao/EMAVisitors.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/licioromao/EMAVisitors.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
 
+[![codecov](https://codecov.io/gh/licioromao/EMAVisitors.jl/branch/main/graph/badge.svg?token=btTBnBTQyw)](https://codecov.io/gh/licioromao/EMAVisitors.jl)
+
+
 EMAVisitors.jl is a Julia package for managing seminar schedules, members, and generating LaTeX documents for the Energy and Markets Analytic (EMA) group at DTU.
 
 **Note:** To run the package, you must place a DTU logo SVG file (e.g., `DTU-wind.svg`) in the directory specified by `OUTPUT_DIR[]`. The package will issue an error if this file is missing.
