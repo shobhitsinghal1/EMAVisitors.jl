@@ -165,8 +165,8 @@ function print_other_columns(speaker::SpeakerName, day_schedules::Vector{Union{D
                         \\end{flushleft}
         """
 
-        for (n, (time, room)) in sorted_members 
-            start_end_time = Dates.format(time[1], "HH:MM") * " - " * Dates.format(time[2], "HH:MM") * Dates.format(time[2], "p")
+        for (n, (time, room)) in sorted_members
+            start_end_time = Dates.format(time[1], "H:MM") * " - " * Dates.format(time[2], "H:MM")# * Dates.format(time[2], "p")
 
             if n == name(speaker) 
 

@@ -85,7 +85,7 @@ function create_schedule()
 
     speaker = SpeakerName(n[1], n[2], email, affiliation, Date(startingdate), duration, host, seminar, hotel)
 
-    tmp_m = String.(talk_schedule[:,"Members interested in meeting"])
+    tmp_m = String.(collect(skipmissing(talk_schedule[:,"Members interested in meeting"])))
     members = Vector{DtuMember}(undef, length(tmp_m))
     for (i, member_name) in enumerate(tmp_m)
         if !isempty(member_name)
@@ -95,12 +95,12 @@ function create_schedule()
         end
     end
 
-    tmp_time = String.(talk_schedule[:, "Time"])
+    tmp_time = String.(collect(skipmissing(talk_schedule[:, "Time"])))
     time = _process_meeting_time(tmp_time)
 
-    rooms = String.(talk_schedule[:,"Room"])
+    rooms = String.(collect(skipmissing(talk_schedule[:,"Room"])))
 
-    dates = talk_schedule[:,"Date"]
+    dates = collect(skipmissing(talk_schedule[:,"Date"]))
     visit_period = collect(startdate(speaker):Day(1):(startdate(speaker) + Day(visitduration(speaker) - 1)))
 
     day_schedules = Vector{Union{DaySchedule,Nothing}}(nothing, length(visit_period))
@@ -121,7 +121,6 @@ function create_schedule()
         end
 
     end
-
     return speaker, day_schedules
 
 end

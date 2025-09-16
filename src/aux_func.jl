@@ -94,8 +94,8 @@ function _process_meeting_time(times::Vector{String})
     for (idx,t) in enumerate(times)
         tmp = split(t, " - ")
         @assert length(tmp) == 2 "Each time entry must have a start and end time."
-        tmp[1] = tmp[1]*" "*split(tmp[2], " ")[end]  # Ensure both times have the same format 
-        times_processed[idx] = (Time(tmp[1], dateformat"I:MM p"), Time(tmp[2], dateformat"I:MM p"))
+        # tmp[1] = tmp[1]*" "*split(tmp[2], " ")[end]  # Ensure both times have the same format 
+        times_processed[idx] = (Time(tmp[1], dateformat"H:MM"), Time(tmp[2], dateformat"H:MM"))
     end
 
     return times_processed
@@ -135,13 +135,13 @@ function _process_seminar(ss::AbstractVector)
             tmp_tt = String(lstrip(info))
             tmp_tt = split(tmp_tt, " - ")
             @assert length(tmp_tt) == 2 "Each seminar must have a start and end time."
-            tmp_tt[1] = tmp_tt[1]*" "*split(tmp_tt[2], " ")[end]  # Ensure both times have the same format
-            tt = (Time(tmp_tt[1], dateformat"I:MM p"), Time(tmp_tt[2], dateformat"I:MM p"))
+            # tmp_tt[1] = tmp_tt[1]*" "*split(tmp_tt[2], " ")[end]  # Ensure both times have the same format
+            tt = (Time(tmp_tt[1], dateformat"H:MM"), Time(tmp_tt[2], dateformat"H:MM"))
             # println(typeof(tt))
 
         elseif type == "Date"
             # println("Date: $info")
-            dd = Date(lstrip(info), "mm/dd/yyyy")
+            dd = Date(lstrip(info))
 
         else
             error("Unknown seminar type: $type")
