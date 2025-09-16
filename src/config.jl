@@ -1,30 +1,37 @@
 """
-    PATH_TO_EXCEL
+    INPUT_DIR
 
-A `Ref{String}` holding the path to the main Excel file with talk information.
+A `Ref{String}` holding the path to common input files required for the package.
 """
-const PATH_TO_EXCEL = Ref(joinpath(homedir(), "Documents", "talk-info.xlsx"))
+const INPUT_DIR = Ref(joinpath(homedir(), "Documents", "ema-talks"))
 
 """
     OUTPUT_DIR
 
-A `Ref{String}` holding the path to the output directory for generated files.
+A `Ref{String}` holding the path to the output directory for generated visitor specific files.
 """
-const OUTPUT_DIR = Ref(joinpath(homedir(), "Documents", "ema-talks"))
+const OUTPUT_DIR = Ref(joinpath(homedir(), "Documents", "ema-talks", "visitor-name"))
+
+"""
+    PATH_TO_EXCEL
+
+A `Ref{String}` holding the path to the main Excel file with talk information.
+"""
+const PATH_TO_EXCEL = Ref(joinpath(OUTPUT_DIR[], "talk-info.xlsx"))
 
 """
     PATH_TO_EMA_MEMBERS
 
 A `Ref{String}` holding the path to the CSV file for EMA members.
 """
-const PATH_TO_EMA_MEMBERS = Ref(joinpath(OUTPUT_DIR[], "ema-members.csv"))
+const PATH_TO_EMA_MEMBERS = Ref(joinpath(INPUT_DIR[], "ema-members.csv"))
 
 """
     PATH_TO_OTHER_MEMBERS
 
 A `Ref{String}` holding the path to the CSV file for other members.
 """
-const PATH_TO_OTHER_MEMBERS = Ref(joinpath(OUTPUT_DIR[], "other-members.csv"))
+const PATH_TO_OTHER_MEMBERS = Ref(joinpath(INPUT_DIR[], "other-members.csv"))
 
 """
     PATH_TO_TALK_SCHEDULE
@@ -38,7 +45,7 @@ const PATH_TO_TALK_SCHEDULE = Ref(joinpath(OUTPUT_DIR[], "talk-schedule.csv"))
 
 A `Ref{String}` holding the path to the DTU wind logo SVG file.
 """
-const PATH_TO_DTU_WIND_LOGO = Ref(joinpath(OUTPUT_DIR[], "DTU-wind.svg"))
+const PATH_TO_DTU_WIND_LOGO = Ref(joinpath(INPUT_DIR[], "DTU-wind.svg"))
 
 
 """
@@ -46,7 +53,7 @@ const PATH_TO_DTU_WIND_LOGO = Ref(joinpath(OUTPUT_DIR[], "DTU-wind.svg"))
 
 A `Ref{String}` holding the path to the directory containing CV PDF files.
 """
-const PATH_TO_CVs = Ref(joinpath(OUTPUT_DIR[], "CVs"))
+const PATH_TO_CVs = Ref(joinpath(INPUT_DIR[], "CVs"))
 
 """
     set_path_to_excel(path::String)
@@ -91,6 +98,21 @@ Set the path to the output directory for generated files.
 """
 function set_path_output_dir(path::String)
     OUTPUT_DIR[] = path
+    PATH_TO_EXCEL[] = joinpath(OUTPUT_DIR[], "talk-info.xlsx")
+    PATH_TO_TALK_SCHEDULE[] = joinpath(OUTPUT_DIR[], "talk-schedule.csv")
+end
+
+"""
+    set_path_input_dir(path::String)
+
+Set the path to the input directory for generated files.
+"""
+function set_path_input_dir(path::String)
+    INPUT_DIR[] = path
+    PATH_TO_EMA_MEMBERS[] = joinpath(INPUT_DIR[], "ema-members.csv")
+    PATH_TO_OTHER_MEMBERS[] = joinpath(INPUT_DIR[], "other-members.csv")
+    PATH_TO_DTU_WIND_LOGO[] = joinpath(INPUT_DIR[], "DTU-wind.svg")
+    PATH_TO_CVs[] = joinpath(INPUT_DIR[], "CVs")
 end
 
 """
@@ -149,6 +171,15 @@ Get the path to the output directory for generated files.
 """
 function get_path_output()
     return OUTPUT_DIR[]
+end
+
+"""
+    get_path_input()
+
+Get the path to the input directory for generated files.
+"""
+function get_path_input()
+    return INPUT_DIR[]
 end
 
 """

@@ -248,7 +248,7 @@ function get_CVs(m::Vector{Union{DaySchedule,Nothing}}, s::SpeakerName)
     for (idx,s) in enumerate(tmp)
         pdfs[idx] = joinpath(PATH_TO_CVs[], s)
         if !isfile(pdfs[idx])
-            error("CV file $s does not exist. Please ensure all CVs are available in the CVs directory.")
+            @warn "CV file $s does not exist. Please ensure all CVs are available in the CVs directory."
         end
     end
 
@@ -256,6 +256,9 @@ function get_CVs(m::Vector{Union{DaySchedule,Nothing}}, s::SpeakerName)
     tmp_3 = joinpath(PATH_TO_CVs[], "$(n)-DTU-visit-CVs-2.pdf")
     run(`cp $(pdfs[1]) $(tmp_2)`)  # Copy the first PDF to tmp_2
     for ff in pdfs[2:end]
+        if !isfile(ff)
+            continue
+        end
         pdftk_cmd = `pdftk $(tmp_2) $ff cat output $tmp_3` 
         run(pdftk_cmd)
         _tmp = tmp_2

@@ -266,6 +266,8 @@ function generate_latex_schedule(; CVs::Bool=true)
         """)
     end
 
+    cp(PATH_TO_DTU_WIND_LOGO[], joinpath(OUTPUT_DIR[], "DTU-wind.svg"))
+
     cd(OUTPUT_DIR[]) do 
         run(`lualatex -output-directory=$(OUTPUT_DIR[]) -shell-escape $(filename) '>' /dev/null`) 
     end
@@ -274,7 +276,7 @@ function generate_latex_schedule(; CVs::Bool=true)
         run(`open $(filename_pdf)`)  # Open the PDF file
         return filename_pdf, nothing
     else
-        _generate_fake_CVs()
+        # _generate_fake_CVs()
         all_CVs = get_CVs(dayschedule, speaker)
         run(`open $(filename_pdf) $(all_CVs)`)  # Open the PDF file
         return filename_pdf, all_CVs
